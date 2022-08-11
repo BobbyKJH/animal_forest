@@ -40,7 +40,7 @@ const VillagersKind = ({ kind }: FilterCard) => {
     <>
       {Kind.map((item: Map) => (
         <CardStyle key={item.id}>
-          <Link to={`/villiager/${item.id}`}>
+          <Link to={`/villager/${item.id}`}>
             <Card icon={item.icon_uri} title={item.name_KRko} />
           </Link>
         </CardStyle>
