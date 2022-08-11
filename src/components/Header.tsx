@@ -24,13 +24,13 @@ const Header = () => {
             동물
           </Link>
           <ul>
-            <Link to="/" className="nav-link">
+            <Link to="/fish" className="nav-link">
               물고기
             </Link>
-            <Link to="/" className="nav-link">
+            <Link to="/bugs" className="nav-link">
               곤충
             </Link>
-            <Link to="/" className="nav-link">
+            <Link to="/sea" className="nav-link">
               바다생물
             </Link>
           </ul>
@@ -41,10 +41,10 @@ const Header = () => {
             예술작품 및 화석
           </Link>
           <ul>
-            <Link to="/" className="nav-link">
+            <Link to="/art" className="nav-link">
               예술작품
             </Link>
-            <Link to="/" className="nav-link">
+            <Link to="/fossil" className="nav-link">
               화석
             </Link>
           </ul>
@@ -55,10 +55,10 @@ const Header = () => {
             음악
           </Link>
           <ul>
-            <Link to="/" className="nav-link">
+            <Link to="/song" className="nav-link">
               노래
             </Link>
-            <Link to="/" className="nav-link">
+            <Link to="/backgroundmusic " className="nav-link">
               배경음악
             </Link>
           </ul>
