@@ -6,7 +6,7 @@ import { ListStyle } from "../../style/list/ListStyle";
 // Select List
 import { Kind } from "../../api/VillagerKind";
 
-const VillagersPage = () => {
+const VillagersListPage = () => {
   const [villager, setVillager] = useState("");
 
   const Select = useCallback(
@@ -34,4 +34,4 @@ const VillagersPage = () => {
   );
 };
 
-export default VillagersPage;
+export default VillagersListPage;
