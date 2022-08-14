@@ -29,7 +29,7 @@ const VillagersListPage = () => {
         ))}
       </select>
 
-      <VillagersKind kind={villager} />
+      <VillagersKind kind={villager} select={Select} />
     </ListStyle>
   );
 };
