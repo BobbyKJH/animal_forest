@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const VillagerCard = styled.div`
+export const CardStyle = styled.div`
   display: inline-flex;
   overflow: hidden;
   text-align: center;
@@ -22,5 +22,28 @@ export const VillagerCard = styled.div`
   .title {
     padding: 0 0 20px 0;
     width: 100%;
+  }
+`;
+
+export const MusicCardStyle = styled(CardStyle)`
+  audio {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .image {
+    margin: 20px 100px 0 100px;
+  }
+  .title {
+    padding: 20px 0;
+  }
+  .link {
+    width: 100%;
+    padding: 20px 0 3px 0;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+    :hover {
+      text-decoration: underline;
+    }
   }
 `;
