@@ -26,6 +26,8 @@ export const Personality = (personality: string) => {
       return "아이돌";
     case "Uchi":
       return "단순활발";
+    case "Snooty":
+      return "성숙함";
     default:
       break;
   }
