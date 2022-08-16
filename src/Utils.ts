@@ -1,6 +1,10 @@
 // 가격
 export const PriceCommas = (num: number) =>
   num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+// 랜덤 카드 리스트
+export const RandomSort = (array: string[]) =>
+  array.sort(() => Math.random() - 0.5);
+
 // 성별
 export const Gender = (gender: string) => {
   if (gender === "Male") {
