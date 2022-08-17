@@ -67,9 +67,6 @@ const MusicCardList = ({ thing }: CardListType) => {
           ) : (
             <>
               <Card title={item.file_name} audio={item.music_uri} />
-              <Link to={`/${thing}/${item.id}`} className="link">
-                자세히 보기
-              </Link>
             </>
           )}
         </MusicCardStyle>
