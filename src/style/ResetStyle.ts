@@ -22,7 +22,7 @@ time, mark, audio, video {
   display: block;
   font-size: 100%;
   font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   flex-wrap: wrap;
 
 }
