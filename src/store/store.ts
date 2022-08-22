@@ -1,11 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import pageSlice from "./pageSlice";
-import searchSlice from "./searchSlice";
+
+import villagerSlice from "./search/villagerSlice";
+import fishSlice from "./search/fishSlice";
+import bugSlice from "./search/bugSlice";
+import seaSlice from "./search/seaSlice";
+import artSlice from "./search/artSlice";
+import fossilSlice from "./search/fossilSlice";
 
 export const store = configureStore({
   reducer: {
-    page: pageSlice,
-    search: searchSlice,
+    villager: villagerSlice,
+    fish: fishSlice,
+    bug: bugSlice,
+    sea: seaSlice,
+    art: artSlice,
+    fossil: fossilSlice,
   },
 });
 
