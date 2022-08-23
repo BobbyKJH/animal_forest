@@ -3,16 +3,16 @@ import type { RootState } from "../store";
 
 interface bugState {
   fossil: string;
-  fossilSearch: string;
-  fossilPage: number;
+  search: string;
+  page: number;
 }
 
 const initialState: bugState = {
   // 카드 검색 버튼
   fossil: "",
   // Input Value
-  fossilSearch: "",
-  fossilPage: 0,
+  search: "",
+  page: 0,
 };
 
 export const fossilSlice = createSlice({
@@ -24,19 +24,26 @@ export const fossilSlice = createSlice({
     },
 
     fossilSearch: (state, action: PayloadAction<string>) => {
-      state.fossilSearch = action.payload;
+      state.search = action.payload;
     },
 
     fossilPage: (state, action: PayloadAction<number>) => {
       if (action.payload === 0) {
-        state.fossilPage = 0;
+        state.page = 0;
       }
-      state.fossilPage += action.payload;
+      state.page += action.payload;
+    },
+
+    fossilReset: (state) => {
+      state.fossil = "";
+      state.search = "";
+      state.page = 0;
     },
   },
 });
 
-export const { fossilList, fossilSearch, fossilPage } = fossilSlice.actions;
+export const { fossilList, fossilSearch, fossilPage, fossilReset } =
+  fossilSlice.actions;
 
 export const fossilType = (state: RootState) => state.fossil;
 
