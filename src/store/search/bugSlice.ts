@@ -3,16 +3,16 @@ import type { RootState } from "../store";
 
 interface bugState {
   bug: string;
-  bugSearch: string;
-  bugPage: number;
+  search: string;
+  page: number;
 }
 
 const initialState: bugState = {
   // 카드 검색 버튼
   bug: "",
   // Input Value
-  bugSearch: "",
-  bugPage: 0,
+  search: "",
+  page: 0,
 };
 
 export const bugSlice = createSlice({
@@ -24,19 +24,24 @@ export const bugSlice = createSlice({
     },
 
     bugSearch: (state, action: PayloadAction<string>) => {
-      state.bugSearch = action.payload;
+      state.search = action.payload;
     },
 
     bugPage: (state, action: PayloadAction<number>) => {
       if (action.payload === 0) {
-        state.bugPage = 0;
+        state.page = 0;
       }
-      state.bugPage += action.payload;
+      state.page += action.payload;
+    },
+    bugReset: (state) => {
+      state.bug = "";
+      state.search = "";
+      state.page = 0;
     },
   },
 });
 
-export const { bugList, bugSearch, bugPage } = bugSlice.actions;
+export const { bugList, bugSearch, bugPage, bugReset } = bugSlice.actions;
 
 export const bugType = (state: RootState) => state.bug;
 

@@ -3,16 +3,16 @@ import type { RootState } from "../store";
 
 interface fishState {
   sea: string;
-  seaSearch: string;
-  seaPage: number;
+  search: string;
+  page: number;
 }
 
 const initialState: fishState = {
   // 카드 검색 버튼
   sea: "",
   // Input Value
-  seaSearch: "",
-  seaPage: 0,
+  search: "",
+  page: 0,
 };
 
 export const seaSlice = createSlice({
@@ -24,19 +24,25 @@ export const seaSlice = createSlice({
     },
 
     seaSearch: (state, action: PayloadAction<string>) => {
-      state.seaSearch = action.payload;
+      state.search = action.payload;
     },
 
     seaPage: (state, action: PayloadAction<number>) => {
       if (action.payload === 0) {
-        state.seaPage = 0;
+        state.page = 0;
       }
-      state.seaPage += action.payload;
+      state.page += action.payload;
+    },
+
+    seaReset: (state) => {
+      state.sea = "";
+      state.search = "";
+      state.page = 0;
     },
   },
 });
 
-export const { seaList, seaSearch, seaPage } = seaSlice.actions;
+export const { seaList, seaSearch, seaPage, seaReset } = seaSlice.actions;
 
 export const seaType = (state: RootState) => state.sea;
 
