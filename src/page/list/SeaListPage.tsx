@@ -1,29 +1,37 @@
 // React
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
+// Redux
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 // Components
-import CardList from "../../components/list/CardList";
 import SearchList from "../../components/list/SearchList";
 // Style
 import { ListStyle } from "../../style/list/ListStyle";
+import {
+  seaList,
+  seaPage,
+  seaSearch,
+  seaType,
+} from "../../store/search/seaSlice";
 
 const SeaListPage = () => {
-  const [search, setSearch] = useState("");
-  const [btn, setBtn] = useState("");
+  const seaValue = useAppSelector(seaType);
+  const searchCard = useAppDispatch();
 
   const Search = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
-      setSearch(value);
+      searchCard(seaSearch(value));
     },
-    [search]
+    [seaValue.search]
   );
 
   const SearchBtn = useCallback(
     (e: React.MouseEvent<HTMLFormElement>) => {
       e.preventDefault();
-      setBtn(search);
+      searchCard(seaList(seaValue.search));
+      searchCard(seaPage(0));
     },
-    [search]
+    [seaValue.search]
   );
 
   return (
@@ -36,17 +44,20 @@ const SeaListPage = () => {
           onChange={Search}
           className="search-input"
           placeholder="해산물 이름을 입력해주세요."
+          value={seaValue.search}
         />
         <button type="submit" className="search-btn">
           검색
         </button>
       </form>
 
-      {btn === "" ? (
-        <CardList thing="sea" />
-      ) : (
-        <SearchList thing="sea" search={btn} />
-      )}
+      <SearchList
+        thing="sea"
+        search={seaValue.sea}
+        page={seaValue.page}
+        next={seaPage(9)}
+        previous={seaPage(-9)}
+      />
     </ListStyle>
   );
 };

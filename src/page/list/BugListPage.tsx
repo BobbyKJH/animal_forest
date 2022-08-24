@@ -1,29 +1,37 @@
 // React
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
+// Redux
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import {
+  bugList,
+  bugPage,
+  bugSearch,
+  bugType,
+} from "../../store/search/bugSlice";
 // Components
-import CardList from "../../components/list/CardList";
 import SearchList from "../../components/list/SearchList";
 // Style
 import { ListStyle } from "../../style/list/ListStyle";
 
 const BugListPage = () => {
-  const [search, setSearch] = useState("");
-  const [btn, setBtn] = useState("");
+  const bugValue = useAppSelector(bugType);
+  const searchCard = useAppDispatch();
 
   const Search = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
-      setSearch(value);
+      searchCard(bugSearch(value));
     },
-    [search]
+    [bugValue.search]
   );
 
   const SearchBtn = useCallback(
     (e: React.MouseEvent<HTMLFormElement>) => {
       e.preventDefault();
-      setBtn(search);
+      searchCard(bugList(bugValue.search));
+      searchCard(bugPage(0));
     },
-    [search]
+    [bugValue.search]
   );
 
   return (
@@ -36,17 +44,20 @@ const BugListPage = () => {
           onChange={Search}
           className="search-input"
           placeholder="곤충 이름을 입력해주세요."
+          value={bugValue.search}
         />
         <button type="submit" className="search-btn">
           검색
         </button>
       </form>
 
-      {btn === "" ? (
-        <CardList thing="bugs" />
-      ) : (
-        <SearchList thing="bugs" search={btn} />
-      )}
+      <SearchList
+        thing="bugs"
+        search={bugValue.bug}
+        page={bugValue.page}
+        next={bugPage(9)}
+        previous={bugPage(-9)}
+      />
     </ListStyle>
   );
 };

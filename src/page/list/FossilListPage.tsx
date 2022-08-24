@@ -1,28 +1,37 @@
 // React
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
+// Redux
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import {
+  fossilList,
+  fossilPage,
+  fossilSearch,
+  fossilType,
+} from "../../store/search/fossilSlice";
 // Components
-import CardList from "../../components/list/CardList";
 import SearchList from "../../components/list/SearchList";
 // Style
 import { ListStyle } from "../../style/list/ListStyle";
 
 const FossilListPage = () => {
-  const [search, setSearch] = useState("");
-  const [btn, setBtn] = useState("");
+  const fossilValue = useAppSelector(fossilType);
+  const searchCard = useAppDispatch();
 
   const Search = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
-      setSearch(value);
+      searchCard(fossilSearch(value));
     },
-    [search]
+    [fossilValue.search]
   );
+
   const SearchBtn = useCallback(
     (e: React.MouseEvent<HTMLFormElement>) => {
       e.preventDefault();
-      setBtn(search);
+      searchCard(fossilList(fossilValue.search));
+      searchCard(fossilPage(0));
     },
-    [search]
+    [fossilValue.search]
   );
 
   return (
@@ -35,17 +44,20 @@ const FossilListPage = () => {
           onChange={Search}
           className="search-input"
           placeholder="화석 이름을 입력해주세요."
+          value={fossilValue.search}
         />
         <button type="submit" className="search-btn">
           검색
         </button>
       </form>
 
-      {btn === "" ? (
-        <CardList thing="fossils" />
-      ) : (
-        <SearchList thing="fossils" search={btn} />
-      )}
+      <SearchList
+        thing="fossils"
+        search={fossilValue.fossil}
+        page={fossilValue.page}
+        next={fossilPage(9)}
+        previous={fossilPage(-9)}
+      />
     </ListStyle>
   );
 };
