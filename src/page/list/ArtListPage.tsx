@@ -1,28 +1,37 @@
 // React
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
+//Redux
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import {
+  artList,
+  artPage,
+  artSearch,
+  artType,
+} from "../../store/search/artSlice";
 // Components
-import CardList from "../../components/list/CardList";
 import SearchList from "../../components/list/SearchList";
 // Style
 import { ListStyle } from "../../style/list/ListStyle";
 
 const ArtListPage = () => {
-  const [search, setSearch] = useState("");
-  const [btn, setBtn] = useState("");
+  const artValue = useAppSelector(artType);
+  const searchCard = useAppDispatch();
 
   const Search = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
-      setSearch(value);
+      searchCard(artSearch(value));
     },
-    [search]
+    [artValue.search]
   );
+
   const SearchBtn = useCallback(
     (e: React.MouseEvent<HTMLFormElement>) => {
       e.preventDefault();
-      setBtn(search);
+      searchCard(artList(artValue.search));
+      searchCard(artPage(0));
     },
-    [search]
+    [artValue.search]
   );
 
   return (
@@ -35,17 +44,20 @@ const ArtListPage = () => {
           onChange={Search}
           className="search-input"
           placeholder="예술 작품을 입력해주세요."
+          value={artValue.search}
         />
         <button type="submit" className="search-btn">
           검색
         </button>
       </form>
 
-      {btn === "" ? (
-        <CardList thing="art" />
-      ) : (
-        <SearchList thing="art" search={btn} />
-      )}
+      <SearchList
+        thing="art"
+        search={artValue.art}
+        page={artValue.page}
+        next={artPage(9)}
+        previous={artPage(-9)}
+      />
     </ListStyle>
   );
 };
