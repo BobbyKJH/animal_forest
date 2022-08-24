@@ -1,16 +1,26 @@
-import { BugLocation, PriceCommas, Time } from "../../Utils";
+import { PriceCommas, SeaShadow, Speed, Time } from "../../Utils";
 
-interface BugType {
+interface seaType {
   image: string;
   name: string;
   take: string;
   museum: string;
-  location: string;
+  speed: string;
   time: string;
+  size: string;
   price: number;
 }
 
-const Bug = ({ image, name, take, museum, location, time, price }: BugType) => {
+const Sea = ({
+  image,
+  name,
+  take,
+  museum,
+  speed,
+  time,
+  size,
+  price,
+}: seaType) => {
   return (
     <>
       <img src={image} className="image" />
@@ -23,21 +33,23 @@ const Bug = ({ image, name, take, museum, location, time, price }: BugType) => {
           <p>{take}</p>
         </div>
 
-        <div className="catch pick">
+        <div className="meseum pick">
           <p className="phrase">감정</p>
           <p>{museum}</p>
         </div>
 
         <div className="chart">
           <div className="chart-nav">
-            <p className="nav">출현장소</p>
+            <p className="nav">속도</p>
             <p className="nav">출현시간</p>
+            <p className="nav">크기</p>
             <p className="nav">가격</p>
           </div>
 
           <div className="chart-nav">
-            <p className="location nav">{BugLocation(location)}</p>
+            <p className="speed nav">{Speed(speed)}</p>
             <p className="time nav">{Time(time)}</p>
+            <p className="size nav">{SeaShadow(size)}</p>
             <p className="price nav">{PriceCommas(price)} 벨</p>
           </div>
         </div>
@@ -46,4 +58,4 @@ const Bug = ({ image, name, take, museum, location, time, price }: BugType) => {
   );
 };
 
-export default Bug;
+export default Sea;

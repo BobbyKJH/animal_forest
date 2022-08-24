@@ -12,16 +12,30 @@ const Villager = ({
   personality,
   hobby,
   talk,
+  birth,
 }: VillagerDetail) => (
   <>
     <img src={image} className="image" />
+
     <div className="intro">
       <span className="name">{name}</span>
-      <div className="Information">
-        <p className="gender">성별: {Gender(gender)}</p>
-        <p className="personality">성격: {Personality(personality)}</p>
-        <p className="hobby">취미: {Hobby(hobby)}</p>
-        <p className="talk">{talk}</p>
+
+      <p className="talk">{talk}</p>
+
+      <div className="chart">
+        <div className="chart-nav">
+          <p className="nav">성별</p>
+          <p className="nav">성격</p>
+          <p className="nav">취미</p>
+          <p className="nav">생일</p>
+        </div>
+
+        <div className="chart-nav">
+          <p className="gender nav">{Gender(gender)}</p>
+          <p className="personality nav">{Personality(personality)}</p>
+          <p className="hobby nav">{Hobby(hobby)}</p>
+          <p className="birth nav">{birth}</p>
+        </div>
       </div>
     </div>
   </>
