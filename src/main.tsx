@@ -9,10 +9,12 @@ import { store } from "./store/store";
 import App from "./App";
 // Style
 import { ResetStyle } from "./style/ResetStyle";
+import ScrollToTop from "./ScrollToTop";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
     <Provider store={store}>
+      <ScrollToTop />
       <ResetStyle />
       <App />
     </Provider>
