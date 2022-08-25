@@ -1,5 +1,5 @@
 // Utils
-import { Gender, Hobby, Personality } from "../../Utils";
+import { Gender, Hobby, Personality } from "../../util/Utils";
 
 interface VillagerDetail {
   [key: string]: string;

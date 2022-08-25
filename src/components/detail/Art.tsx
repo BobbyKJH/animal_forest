@@ -1,4 +1,4 @@
-import { FakeHas, PriceCommas } from "../../Utils";
+import { FakeHas, PriceCommas } from "../../util/Utils";
 
 interface artType {
   image: string;

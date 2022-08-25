@@ -1,4 +1,4 @@
-import { BugLocation, PriceCommas, Time } from "../../Utils";
+import { BugLocation, PriceCommas, Time } from "../../util/Utils";
 
 interface BugType {
   image: string;
