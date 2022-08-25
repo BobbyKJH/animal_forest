@@ -1,4 +1,4 @@
-import { PriceCommas, SeaShadow, Speed, Time } from "../../Utils";
+import { PriceCommas, SeaShadow, Speed, Time } from "../../util/Utils";
 
 interface seaType {
   image: string;

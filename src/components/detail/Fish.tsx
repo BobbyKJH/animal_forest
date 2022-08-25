@@ -1,5 +1,5 @@
 // Utils
-import { Time, FishLocation, PriceCommas, Shadow } from "../../Utils";
+import { Time, FishLocation, PriceCommas, Shadow } from "../../util/Utils";
 
 interface FishType {
   image: string;

@@ -1,4 +1,4 @@
-import { PriceCommas } from "../../Utils";
+import { PriceCommas } from "../../util/Utils";
 
 interface fossilType {
   image: string;
