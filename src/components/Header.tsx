@@ -15,7 +15,7 @@ const Header = () => {
   const Reset = useAppDispatch();
 
   const ResetLink = (e: React.MouseEvent) => {
-    const { id }: any = e.target;
+    const { id }: any = e.currentTarget;
     if (id === "villager") {
       Reset(villagerReset());
     } else if (id === "fish") {
@@ -70,11 +70,11 @@ const Header = () => {
 
         <span className="nav">
           <Link className="link" to="/">
-            예술작품 및 화석
+            미술품 및 화석
           </Link>
           <ul>
             <Link to="/art" className="nav-link" id="art" onClick={ResetLink}>
-              예술작품
+              미술품
             </Link>
             <Link
               to="/fossil"
