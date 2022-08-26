@@ -1,6 +1,10 @@
 /* 가격 */
-export const PriceCommas = (num: number) =>
-  num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export const PriceCommas = (num: number | null) => {
+  if (num === null) {
+    return "구매불가";
+  }
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
 /* 랜덤 카드 리스트 */
 export const RandomSort = (array: never[]) =>
   array.sort(() => Math.random() - 0.5);
@@ -206,4 +210,12 @@ export const FakeHas = (fake: boolean) => {
   } else {
     return "없음";
   }
+};
+
+/* 주문 */
+export const isOrderable = (orderable: boolean) => {
+  if (orderable) {
+    return "가능";
+  }
+  return "불가능";
 };
