@@ -36,7 +36,7 @@ const ArtListPage = () => {
 
   return (
     <ListStyle>
-      <h2 className="list-title">예술 작품</h2>
+      <h2 className="list-title">미술품</h2>
 
       <form onSubmit={SearchBtn} className="search">
         <input
