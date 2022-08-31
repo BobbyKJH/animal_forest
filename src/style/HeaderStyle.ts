@@ -3,21 +3,20 @@ import styled, { keyframes } from "styled-components";
 const Create = keyframes`
 0%{
   opacity: 0;
-  transform: translateY(-5%);
 }
 100%{
   opacity: 1;
-  transform: translateY(0);
   
 }
 `;
 
 export const HeaderStyle = styled.div`
-  background-color: #fff;
+  position: sticky;
+  top: 0;
+  background-color: #f0edcc;
   text-align: center;
   z-index: 10;
   .header {
-    background-color: #fff;
     display: flex;
     margin: 0 auto;
     width: 1440px;
@@ -25,6 +24,7 @@ export const HeaderStyle = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      color: #02343f;
       width: 20%;
       font-size: 2rem;
     }
@@ -38,9 +38,10 @@ export const HeaderStyle = styled.div`
       display: block;
       width: 20%;
       max-height: 78px;
-
+      box-sizing: border-box;
       .link {
         padding: 30px 0;
+        color: #02343f;
       }
       ul {
         display: none;
@@ -48,29 +49,41 @@ export const HeaderStyle = styled.div`
         .nav-link {
           background-color: #fff;
           font-size: 0.9rem;
-          font-weight: 700;
           padding: 20px 0;
           &:hover {
-            background-color: #000;
+            background-color: #02343f;
             color: #fff;
             transition: 0.5s;
           }
         }
       }
       &:hover {
-        border-bottom: 5px solid #000;
+        border-bottom: 8px solid #02343f;
         ul {
           overflow: hidden;
           display: block;
           position: absolute;
+          box-sizing: border-box;
           width: 100%;
-          animation: ${Create} 1.5s;
-          border: 3px solid #000;
+          animation: ${Create} 0.2s;
+          border: 5px solid #02343f;
           border-top: none;
           border-bottom-left-radius: 8px;
           border-bottom-right-radius: 8px;
         }
       }
     }
+  }
+`;
+
+export const FooterStyle = styled.div`
+  height: 100px;
+  background-color: #000;
+  margin-top: 100px;
+  .title {
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    font-size: 2rem;
   }
 `;
