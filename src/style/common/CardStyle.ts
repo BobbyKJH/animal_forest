@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const OpacityBanner = keyframes`
+0%{
+  opacity: 0;
+}
+100%{
+  opacity: 1;
+}
+`;
 
 export const CardStyle = styled.div`
   display: inline-flex;
@@ -12,7 +21,7 @@ export const CardStyle = styled.div`
   box-shadow: 7px 7px 7px 7px #00000050;
   transition: 0.5s;
   &:hover {
-    box-shadow: #00000070;
+    box-shadow: 10px 10px 10px 10px #00000070;
     transform: translateY(-20px);
   }
   .image {
@@ -45,5 +54,14 @@ export const MusicCardStyle = styled(CardStyle)`
     :hover {
       text-decoration: underline;
     }
+  }
+`;
+
+export const BannerCardStyle = styled(CardStyle)`
+  width: 350px;
+  margin: 20px;
+  animation: ${OpacityBanner} 0.5s ease-in;
+  .image {
+    width: 150px;
   }
 `;
